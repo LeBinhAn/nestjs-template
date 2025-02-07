@@ -5,3 +5,8 @@ export class CreateUserDto {
   readonly gender?: string;
   readonly dateOfBirth?: Date;
 }
+
+export class SignInDto {
+  readonly email: string;
+  readonly password: string;
+}
