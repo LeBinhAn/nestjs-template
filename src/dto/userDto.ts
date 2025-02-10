@@ -1,3 +1,6 @@
+import { IsDefined, IsNotEmpty, IsString } from 'class-validator';
+import { IsEmailIfExists } from 'src/utils/validators';
+
 export class CreateUserDto {
   readonly name: string;
   readonly email: string;
@@ -7,6 +10,11 @@ export class CreateUserDto {
 }
 
 export class SignInDto {
-  readonly email: string;
-  readonly password: string;
+  @IsDefined({ message: 'Email is required.' })
+  @IsEmailIfExists()
+  email: string;
+
+  @IsNotEmpty({ message: 'Password is required.' })
+  @IsString()
+  password: string;
 }
